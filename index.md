@@ -9,6 +9,8 @@ layout: default
 
 このドキュメントは NanoVNA に関する非公式なユーザーガイドです。
 
+[github レポジトリ](https://github.com/cho45/NanoVNA-manual) で管理しています。最新ファームウェアと齟齬がある場合など、修正内容がある場合は Pull-request を送ってください。
+
 ## NanoVNA とは
 
 NanoVNA のハードウェアにはいくつか種類があり、このドキュメントが対象とするのは以下のハードウェアです
