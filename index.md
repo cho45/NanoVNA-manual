@@ -216,7 +216,7 @@ NanoVNA には `CH0` `CH1` の 2 つのポートがあります。それぞれ�
  * `CH0` S11 (反射損失)
  * `CH1` S21 (挿入損失)
 
- トレースのチャンネルを変更するには `DISPLAY` `CHANNEL` の `CH0 REFLECT` または `CH1 THROGH` を選択します。
+ トレースのチャンネルを変更するには `DISPLAY` `CHANNEL` の `CH0 REFLECT` または `CH1 THROUGH` を選択します。
 
 ## マーカー
 
@@ -231,13 +231,15 @@ NanoVNA は周波数ドメインデータを信号処理することにより、
 
 測定データを時間ドメインに変換する場合 `DISPLAY` `TRANSOFRM` `TRANSFORM ON` を選択します。`TRANSFORM ON` が有効な場合、測定データは直ちに時間ドメインに変換されて表示されます。
 
-### 時間ドメインバンドパス
+### 時間ドメイン バンドパス
 
-バンドパスモードでは、インパルス信号に対する応答をシミュレートできます。
+バンドパスモードでは、インパルス信号に対する DUT の応答をシミュレートできます。
 
 トレースフォーマットは `LINEAR` `LOGMAG` `SWR` に設定することができます。
 
-(TODO)
+以下にバンドパスフィルタのインパルス応答の例を示します。
+
+<img src="images/tdr-bandpass-bandpass.png">
 
 ### 時間ドメインローパス インパルス
 
@@ -245,7 +247,7 @@ NanoVNA は周波数ドメインデータを信号処理することにより、
 
 トレースフォーマットを `REAL` に設定することができます。
 
-以下のようにインパルス応答をシミュレートできます。以下のオープン状態のステップ応答と、ショート状態のインパルス応答の例を示します。
+以下にオープン状態のステップ応答と、ショート状態のインパルス応答の例を示します。
 
 <img src="images/impulse-open.png">
 <img src="images/impulse-short.png">
@@ -256,7 +258,7 @@ NanoVNA は周波数ドメインデータを信号処理することにより、
 
 トレースフォーマットを `REAL` に設定することができます。
 
-ローパスモードではステップ応答をシミュレートできます。以下のオープン状態のステップ応答と、ショート状態のステップ応答の例を示します。
+以下にオープン状態のステップ応答と、ショート状態のステップ応答の例を示します。
 
 <img src="images/step-open.png">
 <img src="images/step-short.png">
@@ -547,7 +549,7 @@ docker run -it --rm -v $(PWD):/work edy555/arm-embedded:8.2 make
 Visual Studio Code (以下 VSCode) は Microsoft が無償で提供するマルチプラットフォームなコードエディタです。
 [Cortex-Debug](https://marcelball.ca/projects/cortex-debug/) Extension を導入することでオンチップデバッグを GUI で行うことができます。
 
-プラットフォーム依存の部分は省きますが、上記に加えて以下ものが必要です。
+プラットフォーム依存の部分は省きますが、上記に加えて以下のものが必要です。
 
  * openocd
  * VSCode
@@ -627,6 +629,8 @@ Start Debugging (`F5`) をすると、make によるビルドののち、OpenOCD
 TODO
 
 ## アンテナの調整
+
+<img src="images/example-antenna.png">
 
 NanoVNA をアンテナアナライザーとして利用する例を示します。
 
