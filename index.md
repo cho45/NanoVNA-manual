@@ -151,7 +151,7 @@ NanoVNA のハードウェアにはいくつか種類があり、このドキュ
  2. CH0 ポートに OPEN スタンダードを接続し、`CAL` `CALIBRATE` `OPEN` を実行します。
  3. CH0 ポートに SHORT スタンダードを接続し、`CAL` `CALIBRATE` `SHORT` を実行します。
  4. CH0 ポートに LOAD スタンダードを接続し、`CAL` `CALIBRATE` `LOAD` を実行します。
- 5. CH0, CH1 ポートに LOAD スタンダードを接続し、`CAL` `CALIBRATE` `ISOLN` を実行します。CH1 ポートは未接続でもかまいません。
+ 5. CH0, CH1 ポートに LOAD スタンダードを接続し、`CAL` `CALIBRATE` `ISOLN` を実行します。ロードが1つしかない場合 CH0 ポートは未接続でもかまいません。
  6. CH0, CH1 ポートにケーブルを接続し、ケーブル同士をスルーコネクタで接続して、`CAL` `CALIBRATE` `THRU` を実行します。
  7. 較正を終了し、誤差の補正情報を計算します `CAL` `CALIBRATE` `DONE`
  8. データ番号を指定して保存します。`CAL` `CALIBRATE` `SAVE` `SAVE 0`
@@ -493,14 +493,22 @@ DfuSe Demo を起動します。Available DFU Devices に `STM Device in DFU Mod
 
 NanoVNA のファームウェアの開発の必要なものは以下の通りです
 
+ * git
  * gcc-arm-none-eabi
  * make
 
-既にこれらが手元に環境にあるなら、`make` するだけでファームウェアのビルドが可能です。
+既にこれらが手元に環境にあるなら、`make` でファームウェアのビルドが可能です。
+
+```
+git clone git@github.com:ttrftech/NanoVNA.git
+cd NanoVNA
+git submodule update --init --recursive
+make
+```
 
 ## Docker を使ったビルド
 
-docker を使うとわずらわしいことなしにビルドすることができます。docker は無料で利用できるクロスプラットフォームのコンテナユーティリティです。特定の環境を素早く再現するために利用できます。
+docker を使うとわずらわしいことなしにビルドすることができます。docker は無償で利用できるクロスプラットフォームのコンテナユーティリティです。特定の環境 (今回の場合、ビルド環境) を素早く再現するために利用できます。
 
 [docker](https://hub.docker.com/) をインストールした上で、以下のコマンドを実行するだけです。
 
@@ -508,7 +516,84 @@ docker を使うとわずらわしいことなしにビルドすることがで�
 docker run -it --rm -v $(PWD):/work edy555/arm-embedded:8.2 make
 ```
 
-TODO
+## Visual Studio Code を使ったオンチップデバッグ
+
+Visual Studio Code (以下 VSCode) は Microsoft が無償で提供するマルチプラットフォームなコードエディタです。
+[Cortex-Debug](https://marcelball.ca/projects/cortex-debug/) Extension を導入することでオンチップデバッグを GUI で行うことができます。
+
+プラットフォーム依存の部分は省きますが、ファームウェア開発に必要なものに加えて以下ものが必要です。
+
+ * openocd
+ * VSCode
+ * Cortex-Debug
+
+Cortex-Debug は VSCode の Extensions から検索して Install します。
+
+### tasks.json
+
+まず VSCode 上で NanoVNA 全体を make するする「タスク」を定義します。
+
+```
+{
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "build",
+            "command": "make",
+            "args": [
+            ],
+            "options": {
+                "cwd": "${workspaceRoot}"
+            }
+        }
+    ],
+    "version": "2.0.0"
+}
+```
+
+これで VSCode 上のタスクとして make できるようになります。
+
+### launch.json
+
+次に Debug 時にどのように起動するかを定義します。Cortex-Debug の説明に従って設定します。
+
+以下は ST-Link を使った場合の設定です。もし J-Link を使う場合は `interface/stlink.cfg` を `interface/jlink.cfg` に置き換えます。
+
+```
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "cortex-debug",
+            "servertype": "openocd",
+            "request": "launch",
+            "name": "OpenOCD-Debug",
+            "executable": "build/ch.elf",
+            "configFiles": [
+                "interface/stlink.cfg",
+                "target/stm32f0x.cfg"
+            ],
+            "svdFile": "./STM32F0x8.svd",
+            "cwd": "${workspaceRoot}",
+            "preLaunchTask": "build",
+        }
+    ]
+}
+```
+
+`svdFile` に指定するファイルは [ST のサイト](https://www.st.com/ja/microcontrollers-microprocessors/stm32f072c8.html#) からダウンロードできます。
+`svdFile` は指定しなくても動作に支障はありません。
+
+### デバッグを開始する
+
+Start Debugging (`F5`) をすると、make によるビルドののち、OpenOCD が自動的に起動してファームウェアの転送が行われます。
+転送が終わるとリセットハンドラでブレークした状態になります。
+
+<img src="./images/vscode-openocd.png">
+
+`svdFile` を指定している場合、定義済みの MCU のレジスタがデバッグ画面に表示されます。
+
+<img src="./images/vscode-svd.png">
 
 # 使用例
 

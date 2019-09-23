@@ -1,0 +1,25 @@
+{
+  "name": "nanovna-manual",
+  "version": "1.0.0",
+  "description": "このレポジトリについて ======================",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cho45/NanoVNA-manual.git"
+  },
+  "author": "cho45 <cho45@lowreal.net> (http://www.lowreal.net/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cho45/NanoVNA-manual/issues"
+  },
+  "homepage": "https://github.com/cho45/NanoVNA-manual#readme",
+  "devDependencies": {
+    "textlint": "^11.3.1",
+    "textlint-rule-preset-ja-spacing": "^2.0.1",
+    "textlint-rule-preset-ja-technical-writing": "^3.1.3",
+    "textlint-rule-spellcheck-tech-word": "^5.0.0"
+  }
+}
