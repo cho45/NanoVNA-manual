@@ -7,9 +7,15 @@ layout: default
 
 # はじめに
 
-このドキュメントは NanoVNA に関する非公式なユーザーガイドです。
+このドキュメントは NanoVNA に関する非公式なユーザーガイドです。URL は https://cho45.github.io/NanoVNA-manual/ です。
 
-[github レポジトリ](https://github.com/cho45/NanoVNA-manual) で管理しています。最新ファームウェアと齟齬がある場合など、修正内容がある場合は Pull-request を送ってください。
+[github レポジトリ](https://github.com/cho45/NanoVNA-manual) で管理しています。
+
+最新ファームウェアと齟齬がある場合など、修正内容がある場合は Pull-request を送ってください。
+
+また、GitHub の Releases ページで PDF 形式でも提供しています。
+
+ * https://github.com/cho45/NanoVNA-manual/releases
 
 ## NanoVNA とは
 
