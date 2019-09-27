@@ -1,3 +1,12 @@
+About this repository
+=====================
+
+This repository includes unofficial NanoVNA user guide written in Japanese.
+
+If you want to read in English, you can Google translate as following:
+
+ * https://translate.google.co.jp/translate?sl=ja&tl=en&u=https%3A%2F%2Fcho45.github.io%2FNanoVNA-manual%2F
+
 このレポジトリについて
 ======================
 
