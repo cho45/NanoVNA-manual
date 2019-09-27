@@ -471,10 +471,71 @@ github のリポジトリを clone して自分でビルドすることも簡単
 書きこみかたはいろいろな方法がありますが、ここでは [dfu-util](http://dfu-util.sourceforge.net/) を用いて説明します。
 dfu-util はクロスプラットフォームツールであり、Windows ではバイナリも提供されていますので、ダウンロードするだけで使用できます。
 
-### dfu-util 起動まで (Windows 10)
+### dfu-util を使った書きこみ (Ubuntu)
+
+標準パッケージリポジトリに dfu-util があります。
+
+```
+sudo apt-get install dfu-util
+dfu-util --version
+```
+
+デバイスを DFU モードで起動します。以下のいずれかの方法で DFU モードになります。
+
+ * PCB 上の BOOT0 ピンをジャンパーしながら電源を入れる。(電源を入れたあとはジャンパーを外します) 画面が真っ白になりますが正常です。
+ * `CONFIG` `→DFU` `RESET AND ENTER DFU` を選択する
+
+
+以下のコマンドを実行します。build/ch.bin はダウンロードしたファームウェアファイルの .bin までのパスを記述します。
+
+```
+dfu-util -d 0483:df11 -a 0 -s 0x08000000:leave -D build/ch.bin
+```
+
+### dfu-util を使った書きこみ (macOS)
+
+[homebrew](https://brew.sh/index_ja) を使ってインストールするのがお勧めです。
+
+brew コマンドのインストールをします。
+
+```
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+```
+
+dfu-util コマンドのインストールをします。
+
+```
+brew install dfu-util
+```
+
+dfu-util コマンドが正常に起動できることを確認します。
+
+```
+dfu-util --version
+```
+
+デバイスを DFU モードで起動します。以下のいずれかの方法で DFU モードになります。
+
+ * PCB 上の BOOT0 ピンをジャンパーしながら電源を入れる。(電源を入れたあとはジャンパーを外します) 画面が真っ白になりますが正常です。
+ * `CONFIG` `→DFU` `RESET AND ENTER DFU` を選択する
+
+
+以下のコマンドを実行します。build/ch.bin はダウンロードしたファームウェアファイルの .bin までのパスを記述します。
+
+```
+dfu-util -d 0483:df11 -a 0 -s 0x08000000:leave -D build/ch.bin
+```
+
+
+### dfu-util を使った書きこみ (Windows 10)
 
 Windows の場合、DFU モードの NanoVNA を接続すると自動的にデバイスドライバのインストールが行われますが、このデバイスドライバでは dfu-util を利用できません。
 ここでは [Zadig](https://zadig.akeo.ie) を利用してドライバを入れかえます。
+
+デバイスを DFU モードで起動します。以下のいずれかの方法で DFU モードになります。
+
+ * PCB 上の BOOT0 ピンをジャンパーしながら電源を入れる。(電源を入れたあとはジャンパーを外します) 画面が真っ白になりますが正常です。
+ * `CONFIG` `→DFU` `RESET AND ENTER DFU` を選択する
 
 DFU モードにした NanoVNA を接続した状態で Zadig を起動し、以下のように STM32 BOOTLOADER に対して WinUSB をドライバとして利用するようにします。
 
@@ -497,49 +558,11 @@ C:\dfu-util\dfu-util.exe --version
 
 同様にファームウェアのファイルもエクスプローラから PowerShell へドラッグ・アンド・ドロップすることでパスが入力できます。
 
-### dfu-util 起動まで (macOS)
-
-[homebrew](https://brew.sh/index_ja) を使ってインストールするのがお勧めです。
-
-brew コマンドのインストールをします。
-
-```
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-```
-
-dfu-util コマンドのインストールをします。
-
-```
-brew install dfu-util
-```
-
-dfu-util コマンドが正常に起動できることを確認します。
-
-```
-dfu-util --version
-```
-
-### dfu-util 起動まで (Ubuntu)
-
-標準パッケージリポジトリに dfu-util があります。
-
-```
-sudo apt-get install dfu-util
-dfu-util --version
-```
-
-### dfu-util を使った書きこみ
-
-まずデバイスを DFU モードで起動します。以下のいずれかの方法で DFU モードになります。
-
- * PCB 上の BOOT0 ピンをジャンパーしながら電源を入れる。(電源を入れたあとはジャンパーを外します) 画面が真っ白になりますが正常です。
- * `CONFIG` `→DFU` `RESET AND ENTER DFU` を選択する
-
 
 以下のコマンドを実行します。build/ch.bin はダウンロードしたファームウェアファイルの .bin までのパスを記述します。
 
 ```
-dfu-util -d 0483:df11 -a 0 -s 0x08000000:leave -D build/ch.bin
+C:\dfu-util\dfu-util.exe -d 0483:df11 -a 0 -s 0x08000000:leave -D build\ch.bin
 ```
 
 ## ファームウェアの書きこみかた (Windows GUI)
