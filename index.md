@@ -312,10 +312,26 @@ NanoVNA は周波数ドメインデータを信号処理することにより、
 
 トレースフォーマットを `REAL` に設定できます。
 
-以下にオープン状態のステップ応答と、ショート状態のステップ応答の例を示します。
 
+オープン:<br>
 <img class="capture" src="images/step-open.png">
+
+ショート:<br>
 <img class="capture" src="images/step-short.png">
+
+#### ステップ応答の例
+
+容量性ショート:<br>
+<img class="capture" src="images/tdr-capacitive-termination.png">
+
+誘導性ショート:<br>
+<img class="capture" src="images/tdr-inductive-termination.png">
+
+容量性の非連続 (並列に C):<br>
+<img class="capture" src="images/tdr-c-shunt-discontinuity.png">
+
+誘導性の非連続 (直列に L):<br>
+<img class="capture" src="images/tdr-l-series-discontinuity.png">
 
 ### 時間ドメイン ウィンドウ
 
@@ -550,7 +566,7 @@ DFU モードにした NanoVNA を接続した状態で Zadig を起動し、以
 
 <img src="images/win-run-dfu-util.png">
 
-エクスプローラから dfu-util.exe を PowerShell へドラッグ・アンド・ドロップするとパスが自動挿入されます。以下のように `--version` をつけて起動すると dfu-util のバージョン表示ができます。
+エクスプローラから dfu-util.exe を PowerShell へドラッグ&ドロップするとパスが自動挿入されます。以下のように `--version` をつけて起動すると dfu-util のバージョン表示ができます。
 
 ```
 C:\dfu-util\dfu-util.exe --version
@@ -558,7 +574,7 @@ C:\dfu-util\dfu-util.exe --version
 
 <img src="images/win-firmware.png">
 
-同様にファームウェアのファイルもエクスプローラから PowerShell へドラッグ・アンド・ドロップすることでパスが入力できます。
+同様にファームウェアのファイルもエクスプローラから PowerShell へドラッグ&ドロップすることでパスが入力できます。
 
 
 以下のコマンドを実行します。build/ch.bin はダウンロードしたファームウェアファイルの .bin までのパスを記述します。
