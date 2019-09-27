@@ -473,13 +473,29 @@ dfu-util はクロスプラットフォームツールであり、Windows では
 
 ### dfu-util 起動まで (Windows 10)
 
-releases から [dfu-util-0.9-win64.zip](http://dfu-util.sourceforge.net/releases/dfu-util-0.9-win64.zip) をダウンロードして展開します。
+Windows の場合、DFU モードの NanoVNA を接続すると自動的にデバイスドライバのインストールが行われますが、このデバイスドライバでは dfu-util を利用できません。
+ここでは [Zadig](https://zadig.akeo.ie) を利用してドライバを入れかえます。
 
-ファームウェアがあるフォルダでコマンドプロンプトを開き、dfu-util コマンドが使用可能であることを確認します。
+DFU モードにした NanoVNA を接続した状態で Zadig を起動し、以下のように STM32 BOOTLOADER に対して WinUSB をドライバとして利用するようにします。
+
+<img src="images/win-zadig.png">
+
+次に dfu-util を配置します。releases から [dfu-util-0.9-win64.zip](http://dfu-util.sourceforge.net/releases/dfu-util-0.9-win64.zip) をダウンロードして展開します。
+ここでは例として C:\dfu-util に展開したものとします (どこでもかまいません)。
+
+スタートメニューを右クリックして Windows PowerShell を選択します。シェルの画面が開きます。
+
+<img src="images/win-run-dfu-util.png">
+
+エクスプローラから dfu-util.exe を PowerShell へドラッグ・アンド・ドロップするとパスが自動挿入されます。以下のように `--version` をつけて起動すると dfu-util のバージョン表示ができます。
 
 ```
-dfu-util --version
+C:\dfu-util\dfu-util.exe --version
 ```
+
+<img src="images/win-firmware.png">
+
+同様にファームウェアのファイルもエクスプローラから PowerShell へドラッグ・アンド・ドロップすることでパスが入力できます。
 
 ### dfu-util 起動まで (macOS)
 
