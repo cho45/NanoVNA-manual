@@ -96,7 +96,7 @@ NanoVNA には以下の入力があります。
 
 ## メイン画面
 
-<img src="./images/nanovna-display-infor_0000_start-stop.png"/>
+<img class="" src="./images/nanovna-display-infor_0000_start-stop.png"/>
 
 ### 1. START 2. STOP 周波数
 スタート・ストップを指定したときのそれぞれの周波数が表示されます。
@@ -148,7 +148,7 @@ NanoVNA には以下の入力があります。
 
 ## メイン画面2
 
-<img src="./images/nanovna-display-infor_0001_center-span.png"/>
+<img class="" src="./images/nanovna-display-infor_0001_center-span.png"/>
 
 ### 9. CENTER 周波数 10. スパン
 
@@ -158,7 +158,7 @@ NanoVNA には以下の入力があります。
 
 ### メニュー画面
 
-<img src="./images/nanovna-display-infor_0002_menu.png"/>
+<img class="" src="./images/nanovna-display-infor_0002_menu.png"/>
 
 ### 11. メニュー
 
@@ -171,7 +171,7 @@ NanoVNA には以下の入力があります。
 
 ## キーパッド画面
 
-<img src="./images/nanovna-display-infor_0003_keypad.png"/>
+<img class="" src="./images/nanovna-display-infor_0003_keypad.png"/>
 
 ### 12. 数字キー
 
@@ -199,7 +199,7 @@ NanoVNA には以下の入力があります。
 
 # 較正方法
 
-<img src="./images/cal.png">
+<img class="capture" src="./images/cal.png">
 
 較正は基本的に、測定する周波数範囲を変更する度に実行する必要があります。正しくエラー修正がされている場合、画面上の較正状態表示は `Cn D R S T X` となります。n はロードしているデータ番号です。
 
@@ -221,7 +221,7 @@ NanoVNA には以下の入力があります。
 
 ## トレース表示
 
-<img src="./images/traces.png"/>
+<img class="capture" src="./images/traces.png"/>
 
 トレースは最大 4 つ表示でき、そのうちの 1 つがアクティブなトレースとなります。
 
@@ -262,8 +262,8 @@ NanoVNA には `CH0` `CH1` の 2 つのポートがあります。それぞれ�
 
 ## マーカー
 
-<img src="./images/marker.png">
-<img src="./images/marker-select.png">
+<img class="capture" src="./images/marker.png">
+<img class="capture" src="./images/marker-select.png">
 
 マーカーは最大 4 つまで表示できます。マーカーの表示は `MARKER` `SELECT MARKER` `MARKER n` から行います。マーカーを表示すると、アクティブなマーカーは表示したマーカーに設定されます。
 
@@ -293,7 +293,7 @@ NanoVNA は周波数ドメインデータを信号処理することにより、
 
 以下にバンドパスフィルタのインパルス応答の例を示します。
 
-<img src="images/tdr-bandpass-bandpass.png">
+<img class="capture" src="images/tdr-bandpass-bandpass.png">
 
 ### 時間ドメインローパス インパルス
 
@@ -303,8 +303,8 @@ NanoVNA は周波数ドメインデータを信号処理することにより、
 
 以下にオープン状態のステップ応答と、ショート状態のインパルス応答の例を示します。
 
-<img src="images/impulse-open.png">
-<img src="images/impulse-short.png">
+<img class="capture" src="images/impulse-open.png">
+<img class="capture" src="images/impulse-short.png">
 
 ### 時間ドメインローパス ステップ
 
@@ -314,8 +314,8 @@ NanoVNA は周波数ドメインデータを信号処理することにより、
 
 以下にオープン状態のステップ応答と、ショート状態のステップ応答の例を示します。
 
-<img src="images/step-open.png">
-<img src="images/step-short.png">
+<img class="capture" src="images/step-open.png">
+<img class="capture" src="images/step-short.png">
 
 ### 時間ドメイン ウィンドウ
 
@@ -347,7 +347,7 @@ MINIMUM では最大限分解能が高くなります、MAXIMUM では最大限�
 
 ## 測定範囲の設定
 
-<img src="./images/stimulus.png">
+<img class="capture" src="./images/stimulus.png">
 
 測定範囲の設定には 3 つの種類があります。
 
@@ -376,7 +376,7 @@ MINIMUM では最大限分解能が高くなります、MAXIMUM では最大限�
 
 ## 較正と設定の呼び出し
 
-<img src="./images/save.png">
+<img class="capture" src="./images/save.png">
 
 較正データは最大 5 つ保存可能です。NanoVNA は起動直後、番号 0 のデータをロードします。
 
@@ -396,24 +396,24 @@ MINIMUM では最大限分解能が高くなります、MAXIMUM では最大限�
 
 `CAL` `CORRECTION` は現在エラー修正が行われているかを示します。これを選択して一時的にエラー修正を止めることができます。
 
-<img src="./images/recall.png">
+<img class="capture" src="./images/recall.png">
 
 `RECALL` `RECALL n` を選択することで、保存した設定を呼びだすことができます。
 
 ## 機器の設定
 
-<img src="./images/config.png">
+<img class="capture" src="./images/config.png">
 
 `CONFIG` 以下では機器の全般的な設定などを行うことができます。
 
 ### タッチパネルの較正とテスト
 
-<img src="./images/touchcal.png">
-<img src="./images/touchcal2.png">
+<img class="capture" src="./images/touchcal.png">
+<img class="capture" src="./images/touchcal2.png">
 
 `CONFIG` `TOUCH CAL` を選択すると、タッチパネルの較正を行うことができます。実際のタップ位置と、認識されるタップ位置に大きな差がある場合には、これを実行することで解決できます。`TOUCH CAL` を行ったあと、`TOUCH TEST` を行って正しく設定されていることを確認し、`SAVE` で設定を保存します。
 
-<img src="./images/touchtest.png">
+<img class="capture" src="./images/touchtest.png">
 
 `CONFIG` `TOUCH TEST` を選択すると、タッチパネルのテストを行うことができます。タッチパネルをタップしている間は線がひかれます。タッチパネルから離すと元の状態に戻ります。
 
@@ -430,13 +430,13 @@ MINIMUM では最大限分解能が高くなります、MAXIMUM では最大限�
 
 ### バージョンを表示する
 
-<img src="./images/version.png">
+<img class="capture" src="./images/version.png">
 
 `CONFIG` `VERSION` を選択すると、機器のバージョン情報を表示できます。
 
 ### ファームウェアアップデート
 
-<img src="./images/dfu.png">
+<img class="capture" src="./images/dfu.png">
 
 `CONFIG` `→DFU` `RESET AND ENTER DFU` を選択すると、機器をリセットし、DFU (Device Firmware Update) モードに入ります。このモードでは USB 経由でファームウェアアップデートが可能です。
 
@@ -657,7 +657,7 @@ Cortex-Debug は VSCode の Extensions から検索して Install します。
 
 まず VSCode 上で NanoVNA 全体を make するする「タスク」を定義します。
 
-```
+```json
 {
     "tasks": [
         {
@@ -683,7 +683,7 @@ Cortex-Debug は VSCode の Extensions から検索して Install します。
 
 以下は ST-Link を使った場合の設定です。もし J-Link を使う場合は `interface/stlink.cfg` を `interface/jlink.cfg` に置き換えます。
 
-```
+```json
 {
     "version": "0.2.0",
     "configurations": [
@@ -726,7 +726,7 @@ TODO
 
 ## アンテナの調整
 
-<img src="images/example-antenna.png">
+<img class="capture" src="images/example-antenna.png">
 
 NanoVNA をアンテナアナライザーとして利用する例を示します。
 

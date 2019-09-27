@@ -3,6 +3,7 @@
 
 @import "{{ site.theme }}";
 
-img {
+img.capture {
 	image-rendering: pixelated;
 }
+
