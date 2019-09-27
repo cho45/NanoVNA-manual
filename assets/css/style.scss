@@ -7,3 +7,11 @@ img.capture {
 	image-rendering: pixelated;
 }
 
+h1 {
+	page-break-before: always;
+}
+
+.markdown-body h1:first-child {
+	page-break-before: auto;
+}
+
