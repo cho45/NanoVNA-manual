@@ -1,4 +1,4 @@
-name: Jekyll site CI
+name: document release
 
 on: [push]
 
@@ -21,11 +21,11 @@ jobs:
         -v ${{ github.workspace }}:/srv/jekyll  -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
         openlabs/docker-wkhtmltopdf  --print-media-type https://cho45.github.io/NanoVNA-manual/ /srv/jekyll/_site/output.pdf
 
-    - name: Build
+    - name: Upload to releases
       env:
         GO111MODULE: on
         GOPATH: /home/runner/work/
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         go get -u github.com/tcnksm/ghr
-        $GOPATH/bin/ghr -replace -n latest -b "latest pdf" -prerelease latest ${{ github.workspace }}/_site/output.pdf
+        $GOPATH/bin/ghr -u cho45 -r NanoVNA-manual -recreate -replace -n latest -b "latest pdf" -prerelease latest ${{ github.workspace }}/_site/output.pdf
