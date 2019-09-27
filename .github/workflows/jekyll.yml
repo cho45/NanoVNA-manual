@@ -8,15 +8,27 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # - uses: actions/checkout@v1
+        
+    - name: Set up Go 1.12
+      uses: actions/setup-go@v1
+      with:
+        version: 1.12
+      id: go
+      
     - name: Convert HTML to PDF
       run: |
         docker run \
         -v ${{ github.workspace }}:/srv/jekyll  -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
         openlabs/docker-wkhtmltopdf  --print-media-type https://cho45.github.io/NanoVNA-manual/ /srv/jekyll/_site/output.pdf
-        
-    - uses: actions/upload-artifact@master
-      with:
-        name: pdf
-        path: ${{ github.workspace }}/_site/output.pdf
-        
+
+    - name: Check out code into the Go module directory
+      uses: actions/checkout@master
+
+    - name: Build
+      env:
+        GO111MODULE: on
+        GOPATH: /home/runner/work/
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        go get -u github.com/tcnksm/ghr
+        $GOPATH/bin/ghr -n latest -b "latest pdf" -draft latest ${{ github.workspace }}/_site/output.pdf
