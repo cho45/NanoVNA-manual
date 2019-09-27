@@ -13,7 +13,7 @@ jobs:
       run: |
         docker run \
         -v ${{ github.workspace }}:/srv/jekyll  -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
-        openlabs/docker-wkhtmltopdf https://cho45.github.io/NanoVNA-manual/ /srv/jekyll/_site/output.pdf
+        openlabs/docker-wkhtmltopdf  --print-media-type https://cho45.github.io/NanoVNA-manual/ /srv/jekyll/_site/output.pdf
         
     - uses: actions/upload-artifact@master
       with:
