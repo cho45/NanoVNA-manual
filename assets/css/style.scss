@@ -2,6 +2,19 @@
 ---
 
 @import "{{ site.theme }}";
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,700|Noto+Serif+JP&display=auto&subset=japanese');
+
+html,
+body,
+.markdown-body {
+	/* font-family: 'Noto Serif JP', serif; */
+	font-family: 'Noto Sans JP', sans-serif;;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Noto Sans JP', sans-serif;;
+	font-weight: 700;
+}
 
 img.capture {
 	image-rendering: pixelated;

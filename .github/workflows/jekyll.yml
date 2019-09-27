@@ -1,0 +1,22 @@
+name: Jekyll site CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    # - uses: actions/checkout@v1
+    - name: Convert HTML to PDF
+      run: |
+        docker run \
+        -v ${{ github.workspace }}:/srv/jekyll  -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
+        openlabs/docker-wkhtmltopdf https://cho45.github.io/NanoVNA-manual/ /srv/jekyll/_site/output.pdf
+        
+    - uses: actions/upload-artifact@master
+      with:
+        name: pdf
+        path: ${{ github.workspace }}/_site/output.pdf
+        
