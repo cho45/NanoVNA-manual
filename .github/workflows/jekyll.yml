@@ -28,4 +28,4 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         go get -u github.com/tcnksm/ghr
-        $GOPATH/bin/ghr -u cho45 -r NanoVNA-manual -recreate -replace -n latest -b "latest" -prerelease latest ${{ github.workspace }}/_site/NanoVNA-manual.pdf
+        $GOPATH/bin/ghr -u cho45 -r NanoVNA-manual -recreate -replace -n latest -b "latest" latest ${{ github.workspace }}/_site/NanoVNA-manual.pdf
