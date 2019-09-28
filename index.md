@@ -44,9 +44,9 @@ VNA (Vector Network Analyzer) は高周波網 (RF Network) の反射電力およ
 
 NanoVNA は以下の要素を測定します。
 
- * 入力電圧の IQ 信号
- * 反射電圧の IQ 信号
- * 通過電圧の IQ 信号
+ * 入力電圧の I/Q 信号
+ * 反射電圧の I/Q 信号
+ * 通過電圧の I/Q 信号
 
 ここから以下を算出します。
 
