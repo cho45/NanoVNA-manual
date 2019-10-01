@@ -35,3 +35,7 @@ bundle exec jekyll serve
 
 http://localhost:4000/NanoVNA-manual/ で見れるようになります。
 
+
+## ライセンス
+
+本文書は、[CC BY-NC-SA 3.0](https://creativecommons.org/licenses/by-nc-sa/3.0/deed.ja) で配布されます。
